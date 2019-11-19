@@ -16,6 +16,7 @@ class StatusWidget: PKWidget {
     
     /// Core
     private var statusElements: [StatusItem] = [
+        SWeatherItem(),
         SWifiItem(),
         SPowerItem(),
         SClockItem()

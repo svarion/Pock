@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 /// Custom identifiers
 extension NSTouchBar.CustomizationIdentifier {
@@ -106,5 +107,9 @@ class PockMainController: PKTouchBarController {
         guard widget != nil else { return nil }
         return PKWidgetTouchBarItem(widget: widget!)
     }
+    
+}
+
+extension PockMainController : CLLocationManagerDelegate{
     
 }

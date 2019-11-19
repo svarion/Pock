@@ -12,6 +12,7 @@
                 <outlet property="showBatteryPercentageItem" destination="UIv-xe-fLQ" id="hAs-38-djl"/>
                 <outlet property="showDateItem" destination="XAw-dt-3HD" id="Z4g-va-feY"/>
                 <outlet property="showPowerItem" destination="P4F-Aq-avh" id="GQA-CU-urZ"/>
+                <outlet property="showWeatherItem" destination="Pg7-UW-aID" id="Bi6-R6-NjS"/>
                 <outlet property="showWifiItem" destination="2QA-fb-vdC" id="wvf-Iq-9Ka"/>
                 <outlet property="timeFormatTextField" destination="fXD-5d-Dqf" id="wQw-2w-3mb"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -19,15 +20,15 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="392" height="212"/>
+        <customView misplaced="YES" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="270"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAr-3p-C2k">
-                    <rect key="frame" x="20" y="20" width="352" height="172"/>
+                    <rect key="frame" x="20" y="20" width="367" height="202"/>
                     <subviews>
                         <button verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="2QA-fb-vdC">
-                            <rect key="frame" x="-2" y="156" width="113" height="18"/>
+                            <rect key="frame" x="-2" y="186" width="113" height="18"/>
                             <buttonCell key="cell" type="check" title="Show Wifi item" bezelStyle="regularSquare" imagePosition="left" inset="2" id="c9g-yA-umL">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -37,7 +38,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="P4F-Aq-avh">
-                            <rect key="frame" x="-2" y="126" width="126" height="18"/>
+                            <rect key="frame" x="-2" y="156" width="126" height="18"/>
                             <buttonCell key="cell" type="check" title="Show Power item" bezelStyle="regularSquare" imagePosition="left" inset="2" id="OGc-Cn-VS5">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -47,7 +48,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" tag="21" translatesAutoresizingMaskIntoConstraints="NO" id="0iY-fD-cWj">
-                            <rect key="frame" x="18" y="96" width="133" height="18"/>
+                            <rect key="frame" x="18" y="126" width="133" height="18"/>
                             <buttonCell key="cell" type="check" title="Show Battery Icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="S9t-Wy-9IV">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -57,13 +58,23 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" tag="22" translatesAutoresizingMaskIntoConstraints="NO" id="UIv-xe-fLQ">
-                            <rect key="frame" x="18" y="66" width="176" height="18"/>
+                            <rect key="frame" x="18" y="96" width="176" height="18"/>
                             <buttonCell key="cell" type="check" title="Show Battery Percentage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zlO-nx-U7P">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
                                 <action selector="didChangeCheckboxValue:" target="-2" id="8R2-Ul-YqP"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="Pg7-UW-aID">
+                            <rect key="frame" x="-2" y="66" width="140" height="18"/>
+                            <buttonCell key="cell" type="check" title="Show Weather item" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9td-eW-GD0">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="didChangeCheckboxValue:" target="-2" id="PIP-qJ-DFO"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="XAw-dt-3HD">
@@ -136,8 +147,10 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
@@ -153,7 +166,7 @@
                 <constraint firstItem="oAr-3p-C2k" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="d6Z-Rz-Hj6"/>
                 <constraint firstAttribute="trailing" secondItem="oAr-3p-C2k" secondAttribute="trailing" constant="20" id="zeI-g2-vP9"/>
             </constraints>
-            <point key="canvasLocation" x="103" y="191"/>
+            <point key="canvasLocation" x="110.5" y="220"/>
         </customView>
     </objects>
 </document>

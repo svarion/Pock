@@ -9,11 +9,12 @@ target 'Pock' do
   pod 'PockKit'
   
   # Pods for Pock
-  pod 'Fabric'
-  pod 'Crashlytics'
+  #pod 'Fabric'
+  #pod 'Crashlytics'
   pod 'Magnet'
   pod 'Defaults'
   pod 'Preferences'
   pod 'LoginServiceKit', :git => 'https://github.com/Clipy/LoginServiceKit.git'
+  pod 'Alamofire'
   
 end

@@ -17,6 +17,7 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, Prefere
     @IBOutlet weak var showPowerItem:               NSButton!
     @IBOutlet weak var showBatteryIconItem:         NSButton!
     @IBOutlet weak var showBatteryPercentageItem:   NSButton!
+    @IBOutlet weak var showWeatherItem:             NSButton!
     @IBOutlet weak var showDateItem:                NSButton!
     // @IBOutlet weak var showSpotlightItem:           NSButton!
     @IBOutlet weak var timeFormatTextField:         NSTextField!
@@ -42,6 +43,7 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, Prefere
     }
     
     private func loadCheckboxState() {
+        self.showWeatherItem.state           = Defaults[.shouldShowWeatherItem]       ? .on : .off
         self.showWifiItem.state              = Defaults[.shouldShowWifiItem]          ? .on : .off
         self.showPowerItem.state             = Defaults[.shouldShowPowerItem]         ? .on : .off
         self.showBatteryIconItem.state       = Defaults[.shouldShowBatteryIcon]       ? .on : .off
@@ -63,6 +65,8 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, Prefere
             key = .shouldShowBatteryPercentage
         case 3:
             key = .shouldShowDateItem
+        case 4:
+            key = .shouldShowWeatherItem
         /* case 4:
             key = .shouldShowSpotlightItem */
         default:
