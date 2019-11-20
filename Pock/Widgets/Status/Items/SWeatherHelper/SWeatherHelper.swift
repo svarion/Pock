@@ -19,6 +19,7 @@ class SWeatherHelper: NSObject {
     private var locationManager : CLLocationManager?
     public var delegate : SWeatherHelperDelegate?
     private var isUpdatingLocation: Bool = false
+    private var currentLocation : CLLocation = CLLocation()
     
     /*override init() {
         self.locationManager = CLLocationManager()
@@ -51,21 +52,16 @@ class SWeatherHelper: NSObject {
 
 extension SWeatherHelper : CLLocationManagerDelegate{
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard self.delegate != nil else {
-            print("delegate was not set")
-            return
-        }
-        guard locations.count > 0 else {
-            print("no location returned")
-            return
-        }
+    func refreshData(){
+        updateLocationData()
+    }
+    
+    func updateLocationData(){
         
-        let currentLocation = locations.first
-        let apiKey = "API_KEY"
+        let apiKey = "9ed019aec04b602ae6ca3c66c09ef03e"
         
         let weatherObj = OpenWeatherObject()
-        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?lat=\(currentLocation?.coordinate.latitude ?? 0.0)&lon=\(currentLocation?.coordinate.longitude ?? 0.0)&appid=\(apiKey)&units=metric").response{responseData in
+        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?lat=\(self.currentLocation.coordinate.latitude)&lon=\(self.currentLocation.coordinate.longitude)&appid=\(apiKey)&units=metric").response{responseData in
             debugPrint(responseData)
             
             if let data = responseData.data{
@@ -93,9 +89,25 @@ extension SWeatherHelper : CLLocationManagerDelegate{
                 }
                 
                 //debugPrint(json)
+                //print("location updated")
                 self.delegate?.hasNewLocation(weatherItem: weatherObj)
             }
             
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard self.delegate != nil else {
+            print("delegate was not set")
+            return
+        }
+        
+        guard locations.count > 0 else {
+            print("no location returned")
+            return
+        }
+        
+        self.currentLocation = locations.first!
+        updateLocationData()
     }
 }

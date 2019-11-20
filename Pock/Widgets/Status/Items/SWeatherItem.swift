@@ -42,7 +42,7 @@ class SWeatherItem: StatusItem {
     ///Core
     private var weatherHelper: SWeatherHelper = SWeatherHelper()
     private var weatherObject: OpenWeatherObject?
-    //private var refreshTimer: Timer?
+    private var refreshTimer: Timer?
     
     /// UI
     private let iconView: NSImageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 26, height: 26))
@@ -86,6 +86,9 @@ class SWeatherItem: StatusItem {
         configureStackView()
         self.weatherHelper.delegate = self
         self.weatherHelper.startLocationUpdates()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 60*15, repeats: true, block: { _ in
+            self.weatherHelper.refreshData()
+        })
     }
     
     func didUnload() {
