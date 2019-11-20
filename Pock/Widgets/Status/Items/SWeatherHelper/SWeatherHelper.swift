@@ -58,7 +58,7 @@ extension SWeatherHelper : CLLocationManagerDelegate{
     
     func updateLocationData(){
         
-        let apiKey = "9ed019aec04b602ae6ca3c66c09ef03e"
+        let apiKey = "API_KEY"
         
         let weatherObj = OpenWeatherObject()
         Alamofire.request("http://api.openweathermap.org/data/2.5/weather?lat=\(self.currentLocation.coordinate.latitude)&lon=\(self.currentLocation.coordinate.longitude)&appid=\(apiKey)&units=metric").response{responseData in
